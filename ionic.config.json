@@ -1,0 +1,7 @@
+{
+  "name": "gecursos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "ionic-angular"
+}
