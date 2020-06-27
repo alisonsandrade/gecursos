@@ -1,3 +1,5 @@
+import { LoginPage } from './../pages/login/login';
+import { IntroPage } from './../pages/intro/intro';
 import { CursoDetalhesPage } from './../pages/curso-detalhes/curso-detalhes';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -13,7 +15,8 @@ import { SobrePage } from './../pages/sobre/sobre';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  // rootPage: any = HomePage;
+  rootPage: any = IntroPage;
 
   pages: Array<{title: string, icon: string, component: any}>;
 
@@ -22,8 +25,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', icon: 'home', component: HomePage },
-      { title: 'Apresentação', icon: 'information-circle-outline', component: SobrePage}
+      { title: "Home", icon: "home-outline", component: HomePage },
+      { title: "Apresentação", icon: "information-circle-outline", component: SobrePage},
+      { title: "Usuário", icon: "person-add-outline", component: LoginPage}
     ];
 
   }

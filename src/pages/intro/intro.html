@@ -1,0 +1,38 @@
+<!--
+  Generated template for the IntroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Bem vindo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides pager>
+    <ion-slide>
+      <img src="assets/imgs/img-intro-1.png" class="slide-image"/>
+      <h2 class="slide-title" padding>Bem vindo ao GeCursos!</h2>
+      <p padding>O GeCursos é um sistema gerenciador de cursos onde você poderá cadastrar
+      os cursos e os professores que ministraram o módulo.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/imgs/img-intro-2.png" class="slide-image"/>
+      <h2 class="slide-title" padding>O que o GeCursos pode fazer por você?</h2>
+      <p padding>Com o GeCursos você será capaz de acompanhar todos os cursos que serão
+      ministrados, além de ser acesso a uma listagem dos cursos que já foram
+      ministrados.</p>
+      <button ion-button large clear icon-end color="primary" (click)="homePage()">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+  </ion-slides>
+
+
+</ion-content>

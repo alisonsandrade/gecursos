@@ -14,7 +14,7 @@
 
 <ion-content padding>
   
-  Bem vindo, <strong>Alison Andrade</strong>. <a href="#">Sair</a>
+  Bem vindo, <strong *ngIf="userLogado">{{ userLogado.username }}</strong>. <a (click)="logout()">Sair</a>
 
   <div padding>
     <ion-segment [(ngModel)]="courses">

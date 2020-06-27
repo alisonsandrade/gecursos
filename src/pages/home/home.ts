@@ -1,3 +1,5 @@
+import { LoginPage } from './../login/login';
+import { AuthProvider } from './../../providers/auth/auth';
 import { SobrePage } from './../sobre/sobre';
 import { CursoServiceProvider } from './../../providers/curso-service/curso-service';
 import { Component } from '@angular/core';
@@ -16,13 +18,19 @@ import { CursoFormularioPage } from '../curso-formulario/curso-formulario';
 })
 export class HomePage {
 
-  courses: string = 'next'; // Já seta o valor inicial no carregamento do app
+  public courses: string = 'next'; // Já seta o valor inicial no carregamento do app
   public listCourses = []
+  public userLogado: Object = {
+    id: 0,
+    username: "",
+    password: ""
+  } 
 
   constructor(
     public navCtrl: NavController,
     public http: Http,
-    private cursoServiceProvider: CursoServiceProvider
+    private cursoServiceProvider: CursoServiceProvider,
+    private authService: AuthProvider
   ) {
 
     this.cursoServiceProvider.getStorageItem('cursos').then(result => {
@@ -40,10 +48,21 @@ export class HomePage {
           }
       }
     });
+
+    this.authService.getStorageItem('credential').then(result => {
+      this.userLogado = result;
+    });
+    
   }  
 
-  ionViewDidEnter(){
-   
+  ionViewCanEnter(){
+    this.authService.getStorageItem('credential').then(_data => {
+      if (_data) {
+        return true;
+      } else {
+        this.navCtrl.setRoot(LoginPage);
+      }
+    })
   }
 
   openSobrePage(){
@@ -66,6 +85,11 @@ export class HomePage {
 
   openCursoFormulario(){
     this.navCtrl.push(CursoFormularioPage);
+  }
+
+  logout(){
+    this.authService.logout(this.userLogado);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }
