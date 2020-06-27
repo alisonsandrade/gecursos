@@ -1,0 +1,56 @@
+<!--
+  Generated template for the CursoDetalhesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Informações do Curso</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h4 *ngIf="concluido" class="curso-concluido">Curso Concluído</h4>
+  <h4 *ngIf="concluido == false" class="curso-andamento">Curso em Andamento</h4>
+  <ion-card>
+    <img src="{{ img_icon }}" class="img-avatar"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{ nome }}
+        </ion-card-title>
+      <p>
+        Professor: {{ professor }}
+      </p>      
+    </ion-card-content>
+    <ion-list no-lines>    
+      <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+        <p>Realizado em</p>
+        <h2>{{ dt_realizacao }}</h2>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="time" item-start></ion-icon>
+        <p>Carga Horária</p>
+        <h2>{{ carga_horaria }} horas</h2>
+      </ion-item>
+
+      <ion-item>
+        <p>Conteúdo</p>
+        <ion-list>
+          <ion-item *ngFor="let c of conteudo">
+            <h2>{{ c }}</h2>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <p>
+    <button ion-button block color="warning" (click)="homePage()">Retornar à listagem</button>
+  </p>
+  <p>
+    <button ion-button block color="danger" (click)="excluirCurso(id)">Excluir curso</button>
+  </p>
+</ion-content>

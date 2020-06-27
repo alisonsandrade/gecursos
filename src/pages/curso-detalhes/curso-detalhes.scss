@@ -1,0 +1,30 @@
+page-curso-detalhes {
+    ion-content {
+        h4.curso-andamento {
+            background-color: rgb(221, 223, 112);
+            color: #2f292a;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 2px;
+            text-align: center;
+        }
+        h4.curso-concluido {
+            background-color: rgb(66, 182, 182);
+            color: #2f292a;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 2px;
+            text-align: center;
+        }
+        ion-card {
+            img.img-avatar {
+                width: 400px;
+                height: 300px;
+                background-color: rgb(229, 226, 226);
+            }
+        }
+        ion-card-content {
+            text-align: center;            
+        }
+    }    
+}

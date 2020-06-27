@@ -1,18 +1,59 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Gerenciador de Cursos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="light" (click)="openCursoFormulario()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  
+  Bem vindo, <strong>Alison Andrade</strong>. <a href="#">Sair</a>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <div padding>
+    <ion-segment [(ngModel)]="courses">
+      <ion-segment-button value="completed">
+        Concluídos
+      </ion-segment-button>
+      <ion-segment-button value="next">
+        Próximos
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <div [ngSwitch]="courses">
+    <ion-list *ngSwitchCase="'completed'">
+      <span *ngFor="let c of listCourses">
+        <ion-item *ngIf="c.concluido" (click)="openCursoDetalhes(c)" class="list-cursos">
+          <ion-thumbnail item-start>
+            <img src="{{ c.img_icon }}">
+          </ion-thumbnail>
+          <h2>{{c.nome}}</h2>
+          <p>Concluído em: {{ c.dt_realizacao }}</p>
+        </ion-item>
+      </span>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'next'">
+      <span *ngFor="let c of listCourses">
+        <ion-item *ngIf="c.concluido == false" (click)="openCursoDetalhes(c)" class="list-cursos">
+          <ion-thumbnail item-start>
+            <img src="{{ c.img_icon }}" class="img-avatar">
+          </ion-thumbnail>
+          <h2>{{c.nome}}</h2>
+          <p>Iniciará em: {{ c.dt_realizacao }}</p>
+        </ion-item>
+      </span>
+    </ion-list>
+  </div>
+
+  <p>Total de cursos cadastrados: <strong>{{ listCourses.length }}</strong></p>
+  
+  <button ion-button full color="primary" (click)="openSobrePage()">Sobre</button>
 </ion-content>

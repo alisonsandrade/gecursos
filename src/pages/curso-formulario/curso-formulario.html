@@ -1,0 +1,59 @@
+<!--
+  Generated template for the CursoFormularioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Formulário de Cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Curso</ion-label>
+      <ion-input type="text" [(ngModel)]="curso.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Professor</ion-label>
+      <ion-input type="text" [(ngModel)]="curso.professor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de Realização</ion-label>
+      <ion-input type="date" [(ngModel)]="curso.dt_realizacao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Carga Horária</ion-label>
+      <ion-input type="number" [(ngModel)]="curso.carga_horaria"></ion-input>
+    </ion-item>
+    
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Conteúdo</ion-label>
+        <ion-select [(ngModel)]="conteudo" multiple="true" cancelText="Cancelar" okText="Confirmar">
+          <ion-option value="introducao" selected="true">Introdução</ion-option>
+          <ion-option value="arquitetura">Modelo de Arquitetura</ion-option>
+          <ion-option value="pratica" selected="true">Utilização Prática</ion-option>
+          <ion-option value="desenvolvimento">Desenvolvimento Ágil</ion-option>
+          <ion-option value="padroes">Padrões de Projeto</ion-option>        
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    
+  </ion-list>
+
+  <p>
+    <button ion-button full color="secondary" (click)="cadastrarCurso()">Cadastrar</button>
+  </p>
+  <p>
+    <button ion-button full color="warning" (click)="homePage()">Retornar à Listagem</button>
+  </p>
+
+
+</ion-content>
